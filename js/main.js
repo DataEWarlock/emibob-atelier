@@ -1,4 +1,4 @@
-// Emibob Atelier — small interactions
+// Emibob Atelier — interactions + lightbox
 
 document.addEventListener("DOMContentLoaded", () => {
   // Mobile nav toggle
@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       toggle.classList.toggle("active");
     });
 
-    // Close menu when a link is clicked
     mobileMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mobileMenu.classList.remove("open");
@@ -20,42 +19,135 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Copy prompt buttons
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", async () => {
-      const text = btn.getAttribute("data-prompt");
-      if (!text) return;
+  // ========== LIGHTBOX ==========
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImage");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  const lightboxClose = document.getElementById("lightboxClose");
+  const lightboxBackdrop = document.getElementById("lightboxBackdrop");
+  const zoomInBtn = document.getElementById("zoomIn");
+  const zoomOutBtn = document.getElementById("zoomOut");
+  const zoomResetBtn = document.getElementById("zoomReset");
+  const zoomLevelEl = document.getElementById("zoomLevel");
+  const imageWrap = document.getElementById("lightboxImageWrap");
 
-      try {
-        await navigator.clipboard.writeText(text);
-        const original = btn.textContent;
-        btn.textContent = "Copied!";
-        btn.classList.add("copied");
+  let currentScale = 1;
+  const minScale = 0.5;
+  const maxScale = 4;
+  const scaleStep = 0.25;
 
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.classList.remove("copied");
-        }, 1800);
-      } catch (err) {
-        // Fallback for older browsers
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
+  function openLightbox(src, caption) {
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || "";
+    lightboxCaption.textContent = caption || "";
+    currentScale = 1;
+    updateZoom();
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
 
-        btn.textContent = "Copied!";
-        btn.classList.add("copied");
-        setTimeout(() => {
-          btn.textContent = "Copy Prompt";
-          btn.classList.remove("copied");
-        }, 1800);
-      }
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      lightboxImg.src = "";
+      currentScale = 1;
+    }, 250);
+  }
+
+  function updateZoom() {
+    lightboxImg.style.transform = `scale(${currentScale})`;
+    zoomLevelEl.textContent = Math.round(currentScale * 100) + "%";
+  }
+
+  function zoomIn() {
+    if (currentScale < maxScale) {
+      currentScale = Math.min(maxScale, currentScale + scaleStep);
+      updateZoom();
+    }
+  }
+
+  function zoomOut() {
+    if (currentScale > minScale) {
+      currentScale = Math.max(minScale, currentScale - scaleStep);
+      updateZoom();
+    }
+  }
+
+  function zoomReset() {
+    currentScale = 1;
+    updateZoom();
+    imageWrap.scrollTop = 0;
+    imageWrap.scrollLeft = 0;
+  }
+
+  // Open on gallery image click
+  document.querySelectorAll(".gallery-img img").forEach((img) => {
+    img.style.cursor = "zoom-in";
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const card = img.closest(".gallery-card");
+      const title = card ? card.querySelector("h3")?.textContent : img.alt;
+      openLightbox(img.src, title);
     });
   });
 
-  // Very light particle dots (pure CSS-like, tiny performance impact)
+  // Close handlers
+  lightboxClose.addEventListener("click", closeLightbox);
+  lightboxBackdrop.addEventListener("click", closeLightbox);
+
+  // Keyboard
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("open")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "+" || e.key === "=") zoomIn();
+    if (e.key === "-") zoomOut();
+    if (e.key === "0") zoomReset();
+  });
+
+  // Zoom buttons
+  zoomInBtn.addEventListener("click", zoomIn);
+  zoomOutBtn.addEventListener("click", zoomOut);
+  zoomResetBtn.addEventListener("click", zoomReset);
+
+  // Mouse wheel zoom
+  imageWrap.addEventListener("wheel", (e) => {
+    if (!lightbox.classList.contains("open")) return;
+    e.preventDefault();
+    if (e.deltaY < 0) zoomIn();
+    else zoomOut();
+  }, { passive: false });
+
+  // Simple drag to pan when zoomed
+  let isDragging = false;
+  let startX, startY, scrollLeft, scrollTop;
+
+  imageWrap.addEventListener("mousedown", (e) => {
+    if (currentScale <= 1) return;
+    isDragging = true;
+    startX = e.pageX - imageWrap.offsetLeft;
+    startY = e.pageY - imageWrap.offsetTop;
+    scrollLeft = imageWrap.scrollLeft;
+    scrollTop = imageWrap.scrollTop;
+  });
+
+  imageWrap.addEventListener("mouseleave", () => { isDragging = false; });
+  imageWrap.addEventListener("mouseup", () => { isDragging = false; });
+
+  imageWrap.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - imageWrap.offsetLeft;
+    const y = e.pageY - imageWrap.offsetTop;
+    const walkX = (x - startX) * 1.2;
+    const walkY = (y - startY) * 1.2;
+    imageWrap.scrollLeft = scrollLeft - walkX;
+    imageWrap.scrollTop = scrollTop - walkY;
+  });
+
+  // ========== PARTICLES ==========
   const container = document.getElementById("particles");
   if (container) {
     const count = 28;
@@ -75,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
       container.appendChild(dot);
     }
 
-    // Inject keyframes once
     if (!document.getElementById("particle-style")) {
       const style = document.createElement("style");
       style.id = "particle-style";
