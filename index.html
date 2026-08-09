@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emibob Atelier — AI Art, Characters & Prompts</title>
+  <meta name="description" content="Personal showcase of AI-generated anime art, original characters, and carefully crafted prompts by Emibob." />
+  <meta name="theme-color" content="#0c0a14" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Subtle animated background -->
+  <div class="bg-glow"></div>
+  <div class="bg-particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">✦</span>
+        Emibob Atelier
+      </a>
+      <nav class="nav-links">
+        <a href="#gallery">Gallery</a>
+        <a href="#characters">Characters</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#about">About</a>
+      </nav>
+      <a href="https://civitai.red/user/Emibob" target="_blank" rel="noopener" class="nav-cta">
+        Civitai Profile
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#gallery">Gallery</a>
+    <a href="#characters">Characters</a>
+    <a href="#prompts">Prompts</a>
+    <a href="#about">About</a>
+    <a href="https://civitai.red/user/Emibob" target="_blank" rel="noopener" class="mobile-cta">View on Civitai →</a>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">AI Art • Characters • Prompts</p>
+        <h1 class="hero-title">
+          Emibob<br />
+          <span class="gradient-text">Atelier</span>
+        </h1>
+        <p class="hero-desc">
+          A personal collection of AI-generated anime characters, 
+          detailed outfits, and the prompts behind them.
+        </p>
+        <div class="hero-actions">
+          <a href="#gallery" class="btn btn-primary">Explore Gallery</a>
+          <a href="https://civitai.red/user/Emibob" target="_blank" rel="noopener" class="btn btn-ghost">
+            Open Civitai →
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-glow"></div>
+          <div class="hero-card-inner">
+            <span class="hero-card-label">Featured</span>
+            <p>Original characters &amp; outfit studies</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section" id="gallery">
+      <div class="section-header">
+        <h2>Gallery</h2>
+        <p>Selected works. Replace the placeholders with your own images.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Card 1 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder">
+            <span>01</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Character Study</h3>
+            <p>Original design • Full body</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder alt1">
+            <span>02</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Outfit Focus</h3>
+            <p>Detailed clothing • Rear view</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder alt2">
+            <span>03</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Expression Test</h3>
+            <p>Portrait • Soft lighting</p>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder alt3">
+            <span>04</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Dynamic Pose</h3>
+            <p>Action • High detail</p>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder alt4">
+            <span>05</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Style Experiment</h3>
+            <p>Anime XL • Artist influence</p>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="gallery-card">
+          <div class="gallery-img placeholder alt5">
+            <span>06</span>
+          </div>
+          <div class="gallery-info">
+            <h3>Group Scene</h3>
+            <p>Multi-character • Regional</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="gallery-note">
+        Tip: Replace the placeholder divs with <code>&lt;img src="your-image.jpg" alt="..."&gt;</code> 
+        and put your images in the <code>assets/</code> folder.
+      </p>
+    </section>
+
+    <!-- Characters -->
+    <section class="section section-alt" id="characters">
+      <div class="section-header">
+        <h2>Featured Characters</h2>
+        <p>Original characters and recurring designs.</p>
+      </div>
+
+      <div class="char-grid">
+        <article class="char-card">
+          <div class="char-avatar placeholder">M</div>
+          <div class="char-body">
+            <h3>Misaki</h3>
+            <p class="char-tags">MILF • Dragon tattoos • Red eyes</p>
+            <p>Signature character with long braided hair, strong presence, and detailed fantasy elements.</p>
+          </div>
+        </article>
+
+        <article class="char-card">
+          <div class="char-avatar placeholder alt1">Y</div>
+          <div class="char-body">
+            <h3>YiXuan Variants</h3>
+            <p class="char-tags">Zenless Zone Zero • Outfit swaps</p>
+            <p>Precise character recreations and creative outfit explorations from ZZZ.</p>
+          </div>
+        </article>
+
+        <article class="char-card">
+          <div class="char-avatar placeholder alt2">O</div>
+          <div class="char-body">
+            <h3>Original Designs</h3>
+            <p class="char-tags">Custom OCs • Style studies</p>
+            <p>Personal original characters, chibi variants, and experimental designs.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Prompts -->
+    <section class="section" id="prompts">
+      <div class="section-header">
+        <h2>Prompt Examples</h2>
+        <p>A few carefully written prompts you can copy and adapt.</p>
+      </div>
+
+      <div class="prompt-list">
+        <article class="prompt-card">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Character</span>
+            <span class="prompt-model">Pony / Anime XL</span>
+          </div>
+          <h3>Signature Character – Full Body</h3>
+          <pre class="prompt-text">masterpiece, best quality, 1girl, adult woman, long white hair in thick braid over shoulder, red eyes, dragon tattoos on arms and back, curvy figure, detailed face, soft lighting, looking at viewer, full body, intricate clothing, high detail</pre>
+          <button class="copy-btn" data-prompt="masterpiece, best quality, 1girl, adult woman, long white hair in thick braid over shoulder, red eyes, dragon tattoos on arms and back, curvy figure, detailed face, soft lighting, looking at viewer, full body, intricate clothing, high detail">Copy Prompt</button>
+        </article>
+
+        <article class="prompt-card">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Outfit Focus</span>
+            <span class="prompt-model">img2img friendly</span>
+          </div>
+          <h3>Tight High-Waist Denim + Top</h3>
+          <pre class="prompt-text">1girl, exact same character, tight high-waist denim jeans, black belt, simple fitted top, detailed fabric folds, rear view, soft natural lighting, high detail, keep face and body proportions</pre>
+          <button class="copy-btn" data-prompt="1girl, exact same character, tight high-waist denim jeans, black belt, simple fitted top, detailed fabric folds, rear view, soft natural lighting, high detail, keep face and body proportions">Copy Prompt</button>
+        </article>
+
+        <article class="prompt-card">
+          <div class="prompt-meta">
+            <span class="prompt-tag">Style Study</span>
+            <span class="prompt-model">Artist influence</span>
+          </div>
+          <h3>Soft Anime Portrait</h3>
+          <pre class="prompt-text">masterpiece, best quality, close-up portrait, 1girl, detailed eyes, soft expression, delicate lighting, anime style, clean linework, subtle blush, beautiful detailed face</pre>
+          <button class="copy-btn" data-prompt="masterpiece, best quality, close-up portrait, 1girl, detailed eyes, soft expression, delicate lighting, anime style, clean linework, subtle blush, beautiful detailed face">Copy Prompt</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section-alt" id="about">
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>About the Atelier</h2>
+          <p>
+            This is a personal space for AI-generated anime art. 
+            I focus on original characters, precise outfit studies, 
+            and writing prompts that capture specific details — 
+            from hairstyles and tattoos to clothing folds and lighting.
+          </p>
+          <p>
+            Most of my work lives on Civitai. Feel free to follow, 
+            download models, or use the prompts as starting points.
+          </p>
+          <a href="https://civitai.red/user/Emibob" target="_blank" rel="noopener" class="btn btn-primary">
+            Visit Civitai Profile →
+          </a>
+        </div>
+        <div class="about-card">
+          <h3>Quick Links</h3>
+          <ul class="link-list">
+            <li>
+              <a href="https://civitai.red/user/Emibob" target="_blank" rel="noopener">
+                <span>Civitai</span>
+                <span class="link-arrow">→</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="disabled">
+                <span>X / Twitter</span>
+                <span class="link-arrow">soon</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="disabled">
+                <span>Discord</span>
+                <span class="link-arrow">soon</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">✦</span> Emibob Atelier
+      </div>
+      <p>Built for showcasing AI art, characters &amp; prompts.</p>
+      <p class="footer-copy">Free static site • Hosted on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
