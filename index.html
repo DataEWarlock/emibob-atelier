@@ -83,7 +83,7 @@
     <section class="section" id="gallery">
       <div class="section-header">
         <h2>Gallery</h2>
-        <p>Selected works</p>
+        <p>Selected works — click any image to view full size</p>
       </div>
 
       <div class="gallery-grid">
@@ -254,6 +254,24 @@
       <p class="footer-copy">Free static site • Hosted on GitHub Pages</p>
     </div>
   </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+      <div class="lightbox-toolbar">
+        <button class="lightbox-btn" id="zoomOut" title="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoomLevel">100%</span>
+        <button class="lightbox-btn" id="zoomIn" title="Zoom in">+</button>
+        <button class="lightbox-btn" id="zoomReset" title="Reset zoom">Reset</button>
+      </div>
+      <div class="lightbox-image-wrap" id="lightboxImageWrap">
+        <img src="" alt="" id="lightboxImage" draggable="false">
+      </div>
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
